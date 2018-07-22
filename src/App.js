@@ -8,10 +8,10 @@ class App extends Component {
     super();
 
     this.state = {
-      value: '0x94e4d6158e17a681dc8a8326e64578b3c12ba3a3',       
+      tokenContractAddress: '',
       tokenName: '',
       tokenAccountAddress: '',
-      tokenBalance:'',
+      tokenBalance: '',
       tokenPercent: ''
       
      }
@@ -22,8 +22,8 @@ class App extends Component {
  viewTokens = (e) => {
   			e.preventDefault();
         
-        const accountAddress = this.state.value;
-        const contractAdress = '0xa74476443119A942dE498590Fe1f2454d7D4aC0d';
+        const accountAddress = this.state.tokenAccountAddress;
+        const contractAdress = this.state.tokenContractAddress;
         const simpleContract = window.web3.eth.contract(erc20abi);
         const contractInterface = simpleContract.at(contractAdress);
         
@@ -39,8 +39,7 @@ class App extends Component {
   							const divisor = new window.web3.BigNumber(10).toPower(decimals);
   							totalSupply = totalSupply.div(divisor);
                 balance = balance.div(divisor);
-                const perrToken = +percentOwned.round(5);
-                console.log('perr', percentOwned.round(5))
+
                 this.setState({                   
                   tokenName: name,
                   tokenAccountAddress: accountAddress,
@@ -60,7 +59,9 @@ class App extends Component {
         
     }
 
-  hahdleChange = (e) =>  this.setState({value: e.target.value})
+    hahdleChangeKontrakt = (e) =>  this.setState({tokenContractAddress: e.target.value})
+
+    hahdleChangePurse = (e) =>  this.setState({tokenAccountAddress: e.target.value})
 
 
 
@@ -80,8 +81,19 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <input type="text" value={this.state.value} onChange={this.hahdleChange}  placeholder="Введите текст для поиска" /><br />
-        <button onClick={this.viewTokens}>Tokens</button><br />
+        <div className="blockForma">
+          <input type="text" value={this.state.tokenContractAddress} onChange={this.hahdleChangeKontrakt}  placeholder="Адрес контракта" /><br />
+          <input type="text" value={this.state.tokenAccountAddress} onChange={this.hahdleChangePurse}  placeholder="Адрес Кошелька" /><br />
+          <button onClick={this.viewTokens} class="btn btn-light">Tokens</button><br />
+        </div>
+
+
+
+
+
+        
+
+        
         
         <b>Token:</b> {this.state.tokenName} <br /><br />
   			Account: {this.state.tokenAccountAddress}<br />

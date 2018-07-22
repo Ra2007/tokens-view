@@ -4,12 +4,12 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 110px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #c5c2c2;
+  height: 170px;
   padding: 20px;
   color: white;
 }
@@ -22,7 +22,29 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
+.blockForma {
+  background-color: azure;
+  max-width: 600px;
+  position: unset;
+  padding: 50px;
+  margin: 0 auto;
+}
+
+.blockForma input {
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.blockForma button {
+  width: 100px;
+  height: 50px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+/* @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */
