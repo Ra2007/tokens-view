@@ -25,7 +25,7 @@
 .blockForma {
   background-color: azure;
   max-width: 600px;
-  position: unset;
+  
   padding: 50px;
   margin: 0 auto;
 }
@@ -44,7 +44,21 @@
   border-radius: 10px;
 }
 
-/* @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-} */
+.formView {
+  width: 500px;
+  margin: 0 auto;
+  
+  text-align: left;
+}
+
+.formView label {
+  padding: 20px;
+  
+}
+
+.formView input {
+  padding: 5px;
+  margin: 10px;
+  border: 0px;
+  width: 300px;
+}
