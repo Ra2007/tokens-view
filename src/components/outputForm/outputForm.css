@@ -1,0 +1,18 @@
+.formView {
+    width: 500px;
+    margin: 0 auto;
+    
+    text-align: left;
+  }
+  
+  .formView label {
+    padding: 20px;
+    
+  }
+  
+  .formView input {
+    padding: 5px;
+    margin: 10px;
+    border: 0px;
+    width: 300px;
+  }

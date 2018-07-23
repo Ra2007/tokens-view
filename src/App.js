@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import Header from './components/header/header';
+import InputForm from './components/inputForm/inputForm';
+import OutputForm from './components/outputForm/outputForm';
 import {erc20abi} from './data/erc20abi';
-import logo from './logo.svg';
+
 import './App.css';
 
 class App extends Component {
@@ -8,9 +11,9 @@ class App extends Component {
     super();
 
     this.state = {
-      tokenContractAddress: '',
+      tokenContractAddress: '0x5ca9a71b1d01849c0a95490cc00559717fcf0d1d',
       tokenName: '',
-      tokenAccountAddress: '',
+      tokenAccountAddress: '0x58e13aed821374e5c670c5aeaebb53e193ae2349',
       tokenBalance: '',
       tokenPercent: ''      
      }  
@@ -25,7 +28,7 @@ class App extends Component {
         const simpleContract = window.web3.eth.contract(erc20abi);
         const contractInterface = simpleContract.at(contractAdress);
 
-        if (this.checkAdress(accountAddress) && this.acheckAdress(contractAdress)) {       
+        if (this.checkAdress(accountAddress) && this.checkAdress(contractAdress)) {       
         
           contractInterface.totalSupply.call((err, totalSupply) => {
           
@@ -51,8 +54,7 @@ class App extends Component {
   					    });
   				    });
             });
-          } else { alert('neprav')}
-        
+          } else { alert('Incorrect address.')}        
     }
 
   hahdleChangeKontrakt = (e) =>  this.setState({tokenContractAddress: e.target.value})
@@ -64,30 +66,26 @@ class App extends Component {
      return true
     } else {
       return false
-    };
+    }
   }
     
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Shows tokens of the standard ERC20</h1>
-        </header>
-        <p className="App-intro">
-        Must be installed and logged <a href="https://metamask.io/">Metamask</a>.
-        </p>
-        <div className="blockForma">
-          <input type="text" value={this.state.tokenContractAddress} onChange={this.hahdleChangeKontrakt}  placeholder="Contract adress" /><br />
-          <input type="text" value={this.state.tokenAccountAddress} onChange={this.hahdleChangePurse}  placeholder="Account adress" /><br />
-          <button onClick={this.viewTokens} class="btn btn-light">Tokens</button><br />
-        </div>        
-       <form className="formView">        
-        <label><b>Token name </b><input type="text" value={this.state.tokenName}/></label><br />
-        <label><b>Account: </b><input type="text" value={this.state.tokenAccountAddress}/></label><br />
-        <label><b>Quantity: </b><input type="text" value={this.state.tokenBalance}/></label><br />
-        <label><b>Percentage: </b><input type="text" value={this.state.tokenPercent}/></label><br />
-        </form>
+       <div className="App">
+          <Header />
+          <InputForm 
+            tokenContractAddress={this.state.tokenContractAddress}
+            tokenAccountAddress={this.state.tokenAccountAddress}
+            hahdleChangePurse={this.hahdleChangePurse}
+            hahdleChangeKontrakt={this.hahdleChangeKontrakt}
+            viewTokens={this.viewTokens}
+            /> 
+          <OutputForm 
+          tokenName={this.state.tokenName}
+          tokenAccountAddress={this.state.tokenAccountAddress}
+          tokenBalance={this.state.tokenBalance}
+          tokenPercent={this.state.tokenPercent}
+          />       
       </div>
     );
   }
