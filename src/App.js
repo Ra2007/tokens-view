@@ -11,9 +11,9 @@ class App extends Component {
     super();
 
     this.state = {
-      tokenContractAddress: '0x5ca9a71b1d01849c0a95490cc00559717fcf0d1d',
+      tokenContractAddress: '',
       tokenName: '',
-      tokenAccountAddress: '0x58e13aed821374e5c670c5aeaebb53e193ae2349',
+      tokenAccountAddress: '',
       tokenBalance: '',
       tokenPercent: ''      
      }  

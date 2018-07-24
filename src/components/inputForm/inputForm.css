@@ -1,13 +1,12 @@
 .inputForm {
-    background-color: azure;
-    max-width: 600px;
-    
+    background-color: #eeeeee;
+    max-width: 600px;    
     padding: 50px;
     margin: 0 auto;
   }
   
   .inputForm input {
-    width: 300px;
+    width: 400px;
     height: 30px;
     padding: 10px;
     margin: 10px;
